@@ -245,6 +245,35 @@ body {
 </div>
 
 <script>
+function setLanguage(lang) {
+
+    // 保存语言
+    localStorage.setItem("goofans_language", lang);
+
+    // 切换文字
+    document.querySelectorAll("[data-en]").forEach(function(el) {
+
+        if(lang === "cn") {
+            el.innerHTML = el.getAttribute("data-cn");
+        } else {
+            el.innerHTML = el.getAttribute("data-en");
+        }
+
+    });
+
+    // 切换图片
+    document.querySelectorAll("img[data-en-src]").forEach(function(img) {
+
+        if(lang === "cn") {
+            img.src = img.getAttribute("data-cn-src");
+        } else {
+            img.src = img.getAttribute("data-en-src");
+        }
+
+    });
+
+}
+
 // 修复后的 Gooball 音效脚本
 (function() {
     // 等待 DOM 加载完成
